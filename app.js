@@ -11,14 +11,14 @@ elérhető lessz
 }
 
 console.log(count); // hibaüzenet mert minden változó csak a saját ahtókörén belül lessz elérhető, azon kívül nem */
-
+/*
 count = 0; // külső hatókörben definiálom
 
 function  exampleFunction () {
     count + 5; // a belső gyermek függvények hozzáférnek a külső szülő hatókörök változóihoz (kifelé látunk csak befelé nem)
 }
 
-console.log(count);
+console.log(count);*/
 
 
 /*Javascriptben a függvények a hatókörök alapjai minden új függvényel egy új hatókör jön létre
@@ -320,4 +320,107 @@ log('Semmi');
 */
 
 
+////////////////////////////////////////////////////////////////
+// A this rugalmassága
 
+/*const person = {
+    name: 'Berry',
+    introduce: function() {
+        console.log("Hello a nevem " + person.name);
+    }
+}
+
+person.introduce(); */
+
+/*const personFactory = function(name) {
+    return {
+        name: name,
+        introduce: function() {
+            console.log("Hello a nevem " + this.name);
+        },
+    };
+};
+
+personFactory("Berry").introduce();
+personFactory("Henry").introduce();
+personFactory("Lenina").introduce();
+
+*/
+
+/*const person = {
+    name: "Berry",
+    hobbies: ["Discgolf", "Mantrailing"],
+    introduce: function() {
+        console.log("Hello a nevem " + this.name);
+    },
+    isInterestedIn: function(hobby) {
+        if(this.hobbies.includes(hobby)) {
+            console.log("Why yes, i love " + hobby)
+        } else {
+            console.log("Well, I have " + this.hobbies.length + " hobbies, but " + hobby + " is not one of them");
+        }
+    }
+}
+
+person.isInterestedIn("Longform Improve");
+person.isInterestedIn("Discgolf");
+
+*/
+/*var name = "Berry";
+
+function introduce() {
+    console.log("Hello a nevem " + this.name);
+}
+
+introduce();
+
+*/
+
+/*function introFunction() {
+    console.log("Hello a nevem " + this.name);
+}
+
+const person = {
+    name: "Berry",
+    introduce: introFunction,
+}
+
+person.introduce();
+
+*/
+
+/*function introFunction() {
+    console.log("Hello a nevem " + this.nev);
+}
+
+const person = {
+    nev: "Berry",
+    introduce: introFunction
+}
+
+introFunction();
+person.introduce(); */
+
+/*var hero = {
+    _name: 'John Deo',
+    getSecretIdentity: function() {
+        return this._name;
+    }
+}
+
+var stoleSecretIdentity = hero.getSecretIdentity;
+
+console.log(stoleSecretIdentity());
+console.log(hero.getSecretIdentity()); */
+
+function introFunction() {
+    console.log("Hello a nevem " + this.name);
+}
+
+const person = {
+    name: "Pali",
+    introduce: introFunction
+}
+
+person.introduce();
+introFunction();
