@@ -1,4 +1,4 @@
-
+"use strict";
 
 /*Scope - hatókőr a javascript-ben és általánosságban a programozási nyelben scopnak másnéven haókörnek 
 nevezzük a program végrehajtásának az aktuálsi kontextusát tehát azt a környezetet ahol az adaott változó látható
@@ -413,6 +413,8 @@ var stoleSecretIdentity = hero.getSecretIdentity;
 console.log(stoleSecretIdentity());
 console.log(hero.getSecretIdentity()); */
 
+/*
+
 function introFunction() {
     console.log("Hello a nevem " + this.name);
 }
@@ -423,4 +425,114 @@ const person = {
 }
 
 person.introduce();
-introFunction();
+introFunction(); */
+
+/*const button = document.querySelector(".js-button");
+
+button.addEventListener('click', function() {
+    this.classList.toggle("is-info");
+})*/
+/*
+const buttons = document.querySelectorAll(".js-button");
+
+buttons.forEach(function(button) {
+    button.addEventListener('click', function() {
+        alert(this.dataset.info);
+    })
+}) */
+
+/*
+const UI = {
+    
+    colorButton: document.querySelector(".is-primary"),
+    alertButtons: document.querySelectorAll(".js-button"),
+
+    handleColorClick: function() {
+        this.classList.toggle("is-info");
+    },
+
+    handleAlertClick: function() {
+        alert(this.dataset.info);
+    },
+
+    init: function() {
+        this.colorButton.addEventListener('click', this.handleColorClick);
+
+        this.alertButtons.forEach(function(button) {
+            button.addEventListener('click', this.handleAlertClick);
+        });
+
+    }
+
+
+}
+
+UI.init();*/
+
+
+
+/*const UI = {
+    colorButton: document.querySelector(".is-primary"),
+    alertButtons: document.querySelectorAll(".js-button"),
+
+    colorClick: function() {
+        this.classList.toggle(".is-info");
+    },
+
+    alertClick: function() {
+        alert(this.dataset.info);
+    },
+
+    init: function() {
+        this.colorButton.addEventListener('click', this.colorClick);
+        this.alertButtons.forEach( button => {
+            button.addEventListener('click', this.alertClick);
+        })
+    }
+}
+
+UI.init(); */
+
+/////////////////////////////////////////////////////////
+// apply, bind, call
+
+var odon = {
+    nev: 'Ödön',
+    kor: 45,
+    foglalkozas: 'csillagász',
+    udvozles: function(stilus, napszak) {
+        if(stilus === 'hivatalos') {
+            console.log('Üdvözlöm, jó ' + napszak + ' kívánok ' + this.nev + ' vagyok.');
+        } else if(stilus === 'baráti') {
+            console.log('Szia, jó ' + napszak + '!');
+        }
+    }
+}
+
+odon.udvozles('hivatalos', 'hajnalt');
+odon.udvozles('baráti', 'estét');
+
+var bela = {
+    nev: 'Béla',
+    kor: 62,
+    foglalkozas: 'portás'
+}
+
+//call
+odon.udvozles.call(bela, 'baráti', 'estét');
+
+
+// apply
+odon.udvozles.apply(bela, ['baráti', 'regelt']);
+
+// bind
+var odonBarati = odon.udvozles.bind(odon, 'baráti');
+
+odonBarati('napot');
+odonBarati('estét');
+
+var belaHivatalos = odon.udvozles.bind(bela, 'hivatalos');
+var belaHivatalosReggeli = odon.udvozles.bind(bela, 'hivatalos', 'reggelt');
+
+belaHivatalos('estét');
+belaHivatalosReggeli();
