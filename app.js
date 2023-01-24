@@ -1,4 +1,4 @@
-"use strict";
+
 
 /*Scope - hatókőr a javascript-ben és általánosságban a programozási nyelben scopnak másnéven haókörnek 
 nevezzük a program végrehajtásának az aktuálsi kontextusát tehát azt a környezetet ahol az adaott változó látható
@@ -496,7 +496,7 @@ UI.init(); */
 /////////////////////////////////////////////////////////
 // apply, bind, call
 
-var odon = {
+/*var odon = {
     nev: 'Ödön',
     kor: 45,
     foglalkozas: 'csillagász',
@@ -535,4 +535,144 @@ var belaHivatalos = odon.udvozles.bind(bela, 'hivatalos');
 var belaHivatalosReggeli = odon.udvozles.bind(bela, 'hivatalos', 'reggelt');
 
 belaHivatalos('estét');
-belaHivatalosReggeli();
+belaHivatalosReggeli();*/
+/*
+const UI = {
+    colorButton: document.querySelector(".js-color"),
+    alertButtons: document.querySelectorAll(".js-alert"),
+    messageBox: document.querySelector(".js-message"),
+
+    handleColor: function() {
+        this.classList.toggle("is-danger");
+    },
+
+    handleAlert: function(alertButton) {
+        this.messageBox.textContent = alertButton.dataset.info;
+    },
+
+    init: function() {
+
+        this.colorButton.addEventListener("click", this.handleColor);
+
+        this.alertButtons.forEach(alertButton => {
+            alertButton.addEventListener("click", () => this.handleAlert(alertButton));
+        })
+
+    }
+
+}
+
+UI.init();*/
+
+// call
+/*
+const person = {
+    name: "Berry",
+    hobby: "topiary"
+}
+
+function introduce() {
+    console.log("Hi, I'm " + this.name + ", and i spend my free times practicing " + this.hobby);
+}
+
+introduce.call(person);
+
+introduce.apply(person);
+*/
+/*
+const person = {
+    name: "Gábor",
+    hobby: "kosárlabda"
+}
+
+function introduce() {
+    console.log(`Helló az én nevem ${this.name} és a szabadidőmben gyakorlom a ${this.hobby}`);
+}
+
+introduce.call(person);
+introduce.apply(person);
+
+*/
+
+//bind
+/*
+const person = {
+    name: "Berry",
+    hobby: "topiary"
+}
+
+function introduce() {
+    console.log("Hi, I'm " + this.name + ", and I span my free times practicing " + this.hobby);
+}
+
+const introducePerson = introduce.bind(person);
+introducePerson();
+
+*/
+/*
+const UI = {
+    colorButton: document.querySelector(".js-color"),
+    alertButtons: document.querySelectorAll(".js-alert"),
+    messageBox: document.querySelector(".js-message"),
+
+    handleColorClick: function() {
+        this.classList.toggle("is-danger");
+    },
+
+    handleHideClick: function() {
+        this.messageBox.classList.toggle("is-hidden");
+    },
+
+    init: function() {
+
+        this.colorButton.addEventListener("click", this.handleColorClick);
+        this.alertButtons.forEach(alertButton => {
+            alertButton.addEventListener("click", this.handleHideClick.bind(this));
+        })
+    }
+}
+
+UI.init();
+
+*/
+/*
+const topiarist = {
+    hobby: "topiary"
+}
+
+function introduce(name) {
+    console.log("Hi, I'm " + name + ", and i spend my free time practicing " + this.hobby);
+}
+
+const topiaryClub = ["Berry", "Hazel", "Olive", "Lavender"];
+
+topiaryClub.forEach(introduce, topiarist);
+*/
+
+const UI = {
+    // properties to store DOM elements in
+    colorButton: document.querySelector(".js-color"),
+    alertButtons: document.querySelectorAll(".js-alert"),
+    
+    // event handlers
+    handleColorClick: function () {
+      this.classList.toggle("is-danger");
+    },
+    handleAlertClick: function () {
+      alert(this.dataset.info);
+    },
+    
+    // initializer function to attach event handlers
+    init: function () {
+      // attaching the color event handler to a single button element
+      this.colorButton.addEventListener("click", this.handleColorClick);
+      // and attaching the alert to a list of elements
+      this.alertButtons.forEach(function(alertButton) {
+        alertButton.addEventListener("click", this.handleAlertClick);
+
+      }, this);
+    }
+  }
+  
+  // call the UI object's initializer method to set up everything
+  UI.init();

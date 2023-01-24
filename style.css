@@ -1,37 +1,10 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
+
 body {
     margin: 20px;
   }
 
-  .buttons {
-    display: flex;
-    align-items: center;
+  h1 {
+    margin-bottom: 1rem;
   }
 
-  .button {
-    padding: 1rem 3rem;
-    margin: 1rem;
-    display: inline-block;
-    border-radius: .5rem;
-    font-size: 17px;
-    color: white;
-    outline: none;
-    border: none;
-    transition: .2s linear;
-    cursor: pointer;
-  }
-
-  .is-primary {
-    background-color: red;
-  }
-
-  .second {
-    background-color: blue;
-  }
-
-  .third {
-    background-color: yellow;
-  }
-
-  .is-info {
-    background-color: blue;
-  }
